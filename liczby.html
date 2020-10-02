@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciągi liczbowe</title>
+    <link rel="stylesheet" href="styl2.css">
+</head>
+<body>
+    <header>
+        <div id="b1">
+            <h2>Poznaj ciągi liczboowe</h2>
+        </div>
+        <div id="b2">
+            <h5><a href="liczby.html">Ciągi arytmetyczne</a></h5>
+            
+        </div>
+        <div id="b3">
+            <h5><a href="fib.html">Ciąg Fibonacciego</a></h5>
+        </div>
+        <div id="b4">
+            <img src="obraz1.png" alt="Fibonacci">
+        </div>
+    </header>
+    <main>
+        <div id="lewy">
+            <ol>
+                <li>Ciągi arytmetyczne</li>
+                <li>Ciągi geometryczne</li>
+                <li>Ciąg Fibonacciego</li>
+            </ol>
+        </div>
+        <div id="prawy">
+            <h2>Generowanie ciągu arytmetycznego</h2>
+            Pierwszy wyraz A1: <input type="number" id="pierwszyWyrazID"><br>
+            Róznica ciągu R: <input type="number" id="roznicaID"><br>
+            Liczba wyrazów w ciągu N: <input type="number" id="liczbaWyrazowID"><br>
+            <input type="button" value="Generuj Ciąg" onclick="policzCiag()"><br> <!-- wywołaj skrypt po naciśnięciu guzika-->
+            <p id="wynikID"></p>
+        </div>
+    </main>
+    <footer>
+        Autor: 00000000000
+    </footer>
+    <script>
+        function policzCiag() {
+            var pierwszyWyraz = document.getElementById('pierwszyWyrazID').value; //pobieramy wartość z pola input - dostajemy stringa
+            pierwszyWyraz = parseInt(pierwszyWyraz); //konwertujemy strina na liczbę 
+            var roznica = document.getElementById('roznicaID').value;
+            roznica = parseInt(roznica);
+            var liczbaWyrazow = document.getElementById('liczbaWyrazowID').value;
+            liczbaWyrazow = parseInt(liczbaWyrazow);
+            var akapitWynik = document.getElementById('wynikID'); //tworzymy "link" do akapitu, który będzie zawierał wynik
+
+            var obecnyWyraz = pierwszyWyraz; //zapisujemy pierwszy wyraz ciąg
+            var wynik = "Ciąg arytmetyczny zawiera wyrazy: "; //wpisujemy do wyniku tekst początkowy zgodnie z arkuszem
+            for(var i = 1; i <= liczbaWyrazow; i++) { //zaczynajac od pierwszego wyrazu ciągu do ostatniego (liczbaWyrazów)
+                wynik += obecnyWyraz.toString(); //dopisz do stringa wynikowego wartość wyrazu ciągu
+                if(i != liczbaWyrazow) wynik += ", "; //jeśli nie jest to ostatni wyraz dopisz przecinek i spację
+                obecnyWyraz += roznica; //zwiększ następny wyraz ciągu o różnice
+            }
+            akapitWynik.innerHTML = wynik; //zapisz stringa wynikowe do akapitu znajdujacego się na stronie
+        }
+    </script>
+</body>
+</html>
